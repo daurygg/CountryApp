@@ -5,6 +5,7 @@ import { ByCapitalPageComponent } from './pages/by-capital-page/by-capital-page.
 import { ByRegionPageComponent } from './pages/by-region-page/by-region-page.component';
 import { ByCountryPageComponent } from './pages/by-country-page/by-country-page.component';
 import { CountryPageComponent } from './pages/country-page/country-page.component';
+import { provideHttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -16,13 +17,16 @@ const routes: Routes = [
     component: ByRegionPageComponent
   },
   {
-    path: 'by-country',
+    path: 'by-countries',
     component: ByCountryPageComponent
   },
   {
-    path: 'by/:d',
+    path: 'by/:id',
     component: CountryPageComponent
-  },
+  },{
+    path: '**',
+    redirectTo: 'by-capital'
+  }
 ]
 
 @NgModule({
@@ -32,6 +36,7 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+
 })
 export class CountriesRoutingModule { }
